@@ -45,37 +45,37 @@
 		
 		
 		<script>
-			var i = 0, //定义变量
-				timer;//定义变量，为后面的定时器做准备
-			var sum = $(".image li").length;//获取 类名为.image中的li元素的长度；
+			var i = 0, //define variable
+				timer;//Define variables to prepare for subsequent timers
+			var sum = $(".image li").length;//Get the length of the li element in the class name.image;
 			$(function() {
-				$(".image li").eq(0).show();//类名为.image中的li元素 第一个li元素 显示；
+				$(".image li").eq(0).show();//The li element in the class name.image The first li element is displayed;
 		
-				$(".box").hover(function() { //给.box添加事件 hover 是鼠标放上去和鼠标移出来
-					$(".arrow").show();//给.arrow显示出来；
-					clearInterval(timer);//停止计时器；
+				$(".box").hover(function() { //Add event to .box hover is mouse up and mouse out
+					$(".arrow").show();//Show to .arrow;
+					clearInterval(timer);//stop the timer;
 				}, function() {
-					$(".arrow").hide();//隐藏
-					iLunbo();//调用函数
+					$(".arrow").hide();//hide
+					iLunbo();//Call functions
 				})
-				iLunbo();//调用函数
+				iLunbo();//Call functions
 		
-				$(".arrow").hover(function() { //和上面类似
+				$(".arrow").hover(function() { //similar to above
 					clearInterval(timer);
 				});
-				/*左箭头控制轮播*/
-				$(".left").click(function() {//添加单击事件
-					clearInterval(timer);//停止定时器
-					if (i == 0) {//循环 左箭头
+				/* Left arrow controls the carousel */
+				$(".left").click(function() {//Add click event
+					clearInterval(timer);//stop timer
+					if (i == 0) {//loop left arrow
 						i = sum;
 					}
 					i--;
-					startLunbo();//调用函数
-					iLunbo();//调用函数
+					startLunbo();//Call functions
+					iLunbo();//Call functions
 				});
 		
-				/*右箭头控制轮播*/
-				$(".right").click(function() {//同上
+				/* Right arrow controls the carousel */
+				$(".right").click(function() {//Ditto
 					clearInterval(timer);
 					if (i == sum) {
 						i = 0;
@@ -85,34 +85,34 @@
 					iLunbo();
 				});
 		
-				/*提示信息变换*/
-				$(".num>li").hover(function() {//同上
+				/*Prompt information transformation*/
+				$(".num>li").hover(function() {//Ditto
 					clearInterval(timer);
 					i = $(this).index();
 					startLunbo();
 				});
 			});
 		
-			/*自动轮播*/
-			function iLunbo() {//轮播图部分
-				timer = setInterval(function() {//开启定时器
-					i++;//循环i++;
+			/*Auto-rotate*/
+			function iLunbo() {//Carousel section
+				timer = setInterval(function() {//start timer
+					i++;//loop i++;
 					if (i == sum) {
 						i = 0;
 					}
-					startLunbo();//调用
-				}, 2000)//定时器时间为2秒 切换下一张
+					startLunbo();//transfer
+				}, 2000)//The timer time is 2 seconds, switch to the next one
 			}
 		
-			/*图片轮播和提示信息*/
-			function startLunbo() { //这个是切换图片的，
-				if (i == 2) {//循环 当i=2时，切换为第一张图片，就可以一直循环
+			/*Image carousel and prompt information*/
+			function startLunbo() { //This is for switching pictures.
+				if (i == 2) {//Loop When i=2, switch to the first picture, you can loop all the time
 					i = 0;
 				}
 				$(".image>li").eq(i).fadeIn(1000).siblings().fadeOut();
 				$(".num>li").eq(i).addClass("current").siblings().removeClass("current");
 			}
-			//.image>li子选择器，选中li，循环i，fadeIn动画效果 一秒切换 
+			//.image>li sub-selector, select li, cycle i, fadeIn animation effect switch in one second
 		</script>
 	</body>
 </html>
